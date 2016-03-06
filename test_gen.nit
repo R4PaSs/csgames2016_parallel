@@ -4,19 +4,17 @@ if args.length < 2 then
 end
 var iters = args[0].to_i
 var out = new FileWriter.open(args[1])
-out.write("p\n")
 out.write(args[0])
 out.write "\n"
 var bf = new FlatBuffer.with_capacity(iters + iters - 1)
 for i in [0 .. iters[ do
 	for j in [0 .. iters[ do
 		var rnd = 5.rand
-		if rnd > 3 then
+		if rnd >= 3 then
 			bf.add 2.rand.to_c
 		else
 			bf.add '0'
 		end
-		bf.add ' '
 	end
 	out.write bf
 	out.write "\n"
